@@ -1,0 +1,369 @@
+/* =========================================
+   1. CSS VARIABLES & RESET (Dark Tumblr Era)
+========================================= */
+:root {
+    --tumblr-bg: #1A1D24;       /* Deep dark background */
+    --topbar-bg: #12141A;       /* Almost black for top bar */
+    --post-bg: #242831;         /* Dark slate posts */
+    --text-main: #9CA3AF;       /* Soft light gray for reading */
+    --text-heading: #F3F4F6;    /* Crisp white for headings */
+    --text-muted: #6B7280;      /* Darker gray for meta text */
+    --link-color: #60A5FA;      /* Nice blue for links */
+    --link-hover: #3B82F6;
+    --border-color: #374151;    /* Subtle dark border */
+    --border-radius: 6px;       /* Slightly smoother corners */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--tumblr-bg);
+    color: var(--text-main);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* =========================================
+   2. TOP BAR
+========================================= */
+.tumblr-topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-color: var(--topbar-bg);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    z-index: 100;
+}
+
+.topbar-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.logo {
+    font-family: Georgia, serif;
+    font-size: 32px;
+    font-weight: bold;
+    color: var(--text-heading);
+}
+
+.search-bar {
+    background-color: rgba(255,255,255,0.1);
+    color: var(--text-heading);
+    padding: 6px 15px;
+    border-radius: 15px;
+    font-size: 13px;
+    width: 250px;
+    border: none;
+}
+
+.admin-link {
+    color: var(--text-heading);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+
+.admin-link:hover {
+    color: var(--link-color);
+}
+
+/* =========================================
+   3. STRUCTURAL LAYOUT
+========================================= */
+.layout-container {
+    max-width: 960px;
+    margin: 80px auto 40px auto; 
+    padding: 0 20px;
+    display: flex;
+    gap: 40px;
+}
+
+.blog-sidebar {
+    width: 250px;
+    position: sticky;
+    top: 80px;
+    height: max-content;
+}
+
+.dashboard-stream {
+    flex: 1;
+    max-width: 540px; 
+}
+
+/* =========================================
+   4. SIDEBAR STYLING
+========================================= */
+.blog-avatar {
+    width: 128px;
+    height: 128px;
+    border-radius: 6px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    margin-bottom: 20px;
+    background-color: var(--post-bg); /* Fallback if image breaks */
+    display: flex;
+    object-fit: cover; /* Ensures your photo isn't stretched */
+    border: 1px solid var(--border-color);
+}
+
+.blog-title {
+    color: var(--text-heading);
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 1.1;
+    margin-bottom: 5px;
+    letter-spacing: -1px;
+}
+
+.blog-description {
+    color: var(--link-color);
+    font-size: 16px;
+    font-weight: normal;
+    margin-bottom: 15px;
+}
+
+.bio-short {
+    color: var(--text-main);
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+.blog-nav ul {
+    list-style: none;
+    border-top: 1px solid var(--border-color);
+}
+
+.blog-nav li a {
+    display: block;
+    color: var(--text-heading);
+    text-decoration: none;
+    font-size: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-color);
+    transition: all 0.2s;
+}
+
+.blog-nav li a:hover {
+    color: var(--link-color);
+    padding-left: 5px; /* Smooth little slide effect on hover */
+}
+
+/* =========================================
+   5. TUMBLR POST UI
+========================================= */
+.tumblr-post {
+    background-color: var(--post-bg);
+    border-radius: var(--border-radius);
+    /* Increased shadow for better depth against the dark background */
+    box-shadow: 0 6px 12px rgba(0,0,0,0.4); 
+    margin-bottom: 30px;
+    position: relative;
+    /* Removed the 1px border so the arrow blends perfectly */
+}
+
+/* The little triangle pointing left */
+.tumblr-post::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: -14px;
+    border-width: 14px 14px 14px 0;
+    border-style: solid;
+    /* Ensure this matches --post-bg exactly */
+    border-color: transparent #242831 transparent transparent; 
+}
+
+.post-header {
+    padding: 15px 20px;
+    color: var(--text-muted);
+    font-size: 13px;
+}
+
+.post-header strong {
+    color: var(--text-heading);
+    font-weight: bold;
+}
+
+.post-content {
+    padding: 0 20px 20px 20px;
+}
+
+.post-content h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: var(--text-heading);
+}
+
+.post-content p {
+    margin-bottom: 15px;
+    font-size: 15px;
+}
+
+/* Tumblr Blockquote Style */
+.tumblr-quote {
+    border-left: 3px solid var(--link-color);
+    padding-left: 15px;
+    color: var(--text-main);
+    margin: 15px 0;
+    font-style: italic;
+    background-color: rgba(0,0,0,0.1);
+    padding: 10px 15px;
+    border-radius: 0 4px 4px 0;
+}
+
+/* Post Footer: Notes and Tags */
+.post-footer {
+    padding: 15px 20px;
+    border-top: 1px solid var(--border-color);
+    background-color: rgba(0,0,0,0.15); /* Slightly darker inset */
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.notes {
+    font-weight: bold;
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.tags a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 13px;
+    margin-right: 10px;
+    transition: color 0.2s;
+}
+
+.tags a:hover {
+    color: var(--link-color);
+}
+
+/* =========================================
+   6. SKILL TAGS (Injected by JS)
+========================================= */
+.skills-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.skill-tag {
+    background-color: rgba(255,255,255,0.05);
+    color: var(--link-color);
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: bold;
+    border: 1px solid var(--border-color);
+}
+
+/* =========================================
+   7. "ASK" BOX (Contact Form)
+========================================= */
+.ask-post .post-content {
+    padding-top: 20px;
+}
+
+.ask-subtitle {
+    color: var(--text-muted);
+    font-size: 13px !important;
+    margin-top: -10px;
+    margin-bottom: 20px;
+}
+
+.contact-form input, 
+.contact-form select, 
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--text-heading);
+    background-color: rgba(0,0,0,0.2); /* Darkened inputs */
+    transition: border-color 0.2s, background-color 0.2s;
+}
+
+.contact-form input:focus, 
+.contact-form select:focus, 
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--link-color);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.ask-footer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.submit-btn {
+    background-color: var(--link-color);
+    color: #FFF;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.submit-btn:hover {
+    background-color: var(--link-hover);
+}
+
+.feedback-msg {
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+/* =========================================
+   8. RESPONSIVE DESIGN
+========================================= */
+@media (max-width: 800px) {
+    .layout-container {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 60px;
+    }
+
+    .blog-sidebar {
+        width: 100%;
+        position: relative;
+        top: 0;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .blog-avatar {
+        margin: 0 auto 20px auto;
+    }
+
+    .dashboard-stream {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .tumblr-post::before {
+        display: none;
+    }
+}

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio | Software Engineer</title>
+    
+    <link rel="stylesheet" href="style.css">
+    </head>
+<body>
+
+    <div class="tumblr-topbar">
+        <div class="topbar-inner">
+            <div class="logo">MeatLoaf</div>
+            <div class="search-bar">Search...</div>
+            <div class="topbar-icons">
+                <a href="login.php" class="admin-link">Dashboard Login</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="layout-container">
+        
+        <aside class="blog-sidebar">
+            <img src="loaf.jpg" alt="Profile Avatar" class="blog-avatar">
+            
+            <h1 id="hero-name" class="blog-title">Loading...</h1>
+            <h2 id="hero-title" class="blog-description">System Initializing...</h2>
+            <p class="bio-short">
+                I build accessible, pixel-perfect digital experiences for the web.
+            </p>
+
+            <nav class="blog-nav">
+                <ul>
+                    <li><a href="#about">About Me</a></li>
+                    <li><a href="#skills">Technical Arsenal</a></li>
+                    <li><a href="#projects">My Projects</a></li>
+                    <li><a href="#contact">Ask Me Anything</a></li>
+                    <li><a href="https://github.com/MeatLoaf000" target="_blank">Archive (GitHub)</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="dashboard-stream">
+
+            <article id="about" class="tumblr-post">
+                <div class="post-header">
+                    <strong>about-me</strong> reblogged from <strong>sen3002</strong>
+                </div>
+                <div class="post-content">
+                    <h2>System Specifications</h2>
+                    <p>
+                        I am a software engineering student with a strong focus on full-stack web development, Python programming, and complex system troubleshooting. I enjoy tackling highly technical challenges—whether that means debugging high-volume data synchronization protocols, optimizing modded game environments, or building dynamic web applications.
+                    </p>
+                    <p>
+                        Currently, I am refining my skills in server-side logic and database management, blending clean client-side interfaces with robust backend architecture.
+                    </p>
+                </div>
+                <div class="post-footer">
+                    <div class="notes">1,337 notes</div>
+                    <div class="tags">
+                        <a href="#">#about</a> <a href="#">#software engineering</a> <a href="#">#halic university</a>
+                    </div>
+                </div>
+            </article>
+
+            <article id="skills" class="tumblr-post">
+                <div class="post-header">
+                    <strong>my-skills</strong>
+                </div>
+                <div class="post-content">
+                    <h2>Neural Network</h2>
+                    <div id="skills-container" class="skills-flex"></div>
+                </div>
+                <div class="post-footer">
+                    <div class="notes">404 notes</div>
+                    <div class="tags">
+                        <a href="#">#skills</a> <a href="#">#tech stack</a> <a href="#">#javascript</a>
+                    </div>
+                </div>
+            </article>
+
+            <article id="projects" class="tumblr-post">
+                <div class="post-header">
+                    <strong>featured-projects</strong>
+                </div>
+                <div class="post-content">
+                    
+                    <div id="projects-container">
+                        <div class="project-item">
+                            <h3>Terminal Survival Game</h3>
+                            <p>A structured, multi-file text-based survival adventure built from scratch using Python. Features player classes, inventory management, and location-based navigation.</p>
+                            
+                            <blockquote class="tumblr-quote">
+                                Stack: Python, VS Code, OOP
+                            </blockquote>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="post-footer">
+                    <div class="notes">2,048 notes</div>
+                    <div class="tags">
+                        <a href="#">#projects</a> <a href="#">#python</a> <a href="#">#game dev</a>
+                    </div>
+                </div>
+            </article>
+
+            <article id="contact" class="tumblr-post ask-post">
+                <div class="post-content">
+                    <h2>Ask me anything</h2>
+                    <p class="ask-subtitle">Anonymous asks are currently disabled.</p>
+                    
+                    <form id="contact-form" class="contact-form">
+                        <input type="text" id="name" name="name" placeholder="Name" required>
+                        <input type="email" id="email" name="email" placeholder="Email" required>
+                        
+                        <select id="reason" name="reason">
+                            <option value="freelance">Freelance Inquiry</option>
+                            <option value="collaboration">Project Collaboration</option>
+                            <option value="hello">Just saying hello</option>
+                        </select>
+
+                        <textarea id="message" name="message" rows="4" placeholder="Ask a question..." required></textarea>
+
+                        <div id="form-feedback" class="feedback-msg"></div>
+
+                        <div class="ask-footer">
+                            <button type="submit" class="submit-btn">Ask</button>
+                        </div>
+                    </form>
+                </div>
+            </article>
+
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
