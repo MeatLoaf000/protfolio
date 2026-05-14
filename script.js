@@ -4,30 +4,57 @@ console.log("=== SYSTEM BOOT INITIATED ===");
 const studentName = "Yasir Ibrahim";
 const studentTitle = "Software Engineering Student";
 
-// 2. Skills Array
-const mySkills = [
-    "HTML5", "CSS3", "JavaScript", "PHP", 
-    "MySQL", "Python", "Object-Oriented Programming", "System Troubleshooting"
-];
-
 document.addEventListener('DOMContentLoaded', () => {
-    // 3. Inject Name and Title 
+    // 2. Inject Name and Title 
     const nameElement = document.getElementById('hero-name');
     const titleElement = document.getElementById('hero-title');
     
     if (nameElement) nameElement.innerText = studentName;
     if (titleElement) titleElement.innerText = studentTitle;
 
-    // Inject Skills
-    const skillsContainer = document.getElementById('skills-container');
-    if (skillsContainer) {
-        mySkills.forEach(skill => {
-            const span = document.createElement('span');
-            span.className = 'skill-tag';
-            span.innerText = skill;
-            skillsContainer.appendChild(span);
-        });
-    }
+    
+    fetch('fetch_data.php?type=skills')
+        .then(response => response.json())
+        .then(skills => {
+            const skillsContainer = document.getElementById('skills-container');
+            if (skillsContainer) {
+                skillsContainer.innerHTML = ''; // Clear container
+                skills.forEach(skill => {
+                    const span = document.createElement('span');
+                    span.className = 'skill-tag';
+                    span.innerText = skill;
+                    skillsContainer.appendChild(span);
+                });
+            }
+        })
+        .catch(error => console.error('Error loading skills:', error));
+
+    // 4. Fetch Projects Dynamically from Database
+    fetch('fetch_data.php?type=projects')
+        .then(response => response.json())
+        .then(projects => {
+            const projectsContainer = document.getElementById('projects-container');
+            if (projectsContainer) {
+                projectsContainer.innerHTML = ''; // Clear the static HTML project
+                projects.forEach(proj => {
+                    
+                    projectsContainer.innerHTML += `
+                        <div class="project-item">
+                            <h3>${proj.title}</h3>
+                            <p>${proj.description}</p>
+                            <blockquote class="tumblr-quote">
+                                Stack: ${proj.tech_stack}
+                            </blockquote>
+                            <a href="Finsihed_Projects.jpg" target="_blank" style="color: var(--link-color); text-decoration: none; font-size: 14px; font-weight: bold; display: inline-block; margin-top: 5px;">
+                                View Finished Project ➔
+                            </a>
+                        </div>
+                    `;
+                });
+            }
+        })
+        .catch(error => console.error('Error loading projects:', error));
+
     // 5. Mouse Hover Glow Effect
     const glow = document.querySelector('.mouse-glow');
     if (glow) {
@@ -37,22 +64,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 4. Client-Side Form Validation & AJAX
+    // 6. Client-Side Form Validation & AJAX
     const contactForm = document.getElementById('contact-form');
     const formFeedback = document.getElementById('form-feedback');
 
     if (contactForm) {
         contactForm.addEventListener('submit', function(event) {
-            // Stop the default HTML form submission from refreshing the page
             event.preventDefault(); 
             
             const nameInput = document.getElementById('name').value.trim();
             const emailInput = document.getElementById('email').value.trim();
             const messageInput = document.getElementById('message').value.trim();
 
-            // Simple Client-Side Validation
             if (nameInput === "" || emailInput === "" || messageInput === "") {
-                formFeedback.style.color = "#EF4444"; // Red error
+                formFeedback.style.color = "#EF4444"; 
                 formFeedback.innerText = "Error: All fields are required.";
                 return;
             }
@@ -63,26 +88,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // AJAX Transmit Status
-            formFeedback.style.color = "#60A5FA"; // Processing blue
+            formFeedback.style.color = "#60A5FA"; 
             formFeedback.innerText = "Transmitting message to server...";
 
-            // Pack the form data up neatly
             const formData = new FormData(contactForm);
 
-            // Send the data asynchronously via POST to your PHP engine
             fetch('submit_form.php', {
                 method: 'POST',
                 body: formData
             })
-            .then(response => response.json()) // Read the PHP JSON response
+            .then(response => response.json()) 
             .then(data => {
                 if (data.status === 'success') {
-                    formFeedback.style.color = "#10B981"; // Success green
+                    formFeedback.style.color = "#10B981"; 
                     formFeedback.innerText = data.message;
-                    contactForm.reset(); // Clear the form on success
+                    contactForm.reset(); 
                 } else {
-                    formFeedback.style.color = "#EF4444"; // Server Error red
+                    formFeedback.style.color = "#EF4444"; 
                     formFeedback.innerText = data.message;
                 }
             })
