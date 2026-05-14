@@ -1,7 +1,10 @@
-letshopethiswork.infinityfree.me 
 # SEN 3002: Full-Stack Web Portfolio
 **Developer:** Yasir Ibrahim | Software Engineering Student
 **Institution:** Haliç University
+
+## Links
+* **Live Demo:** letshopethiswork.infinityfree.me 
+* **GitHub Repository:** https://github.com/MeatLoaf000/sen3002-portfolio (Replace with your actual repo link)
 
 ## Project Overview
 This project is a dynamic, database-driven web portfolio designed to fulfill the requirements of the SEN 3002 Internet & Web Programming course. Rather than utilizing a standard corporate template, the UI/UX architecture was intentionally engineered to replicate the nostalgic 2014-era "Dashboard" aesthetic. It utilizes a fixed-sidebar layout with asynchronous content rendering to provide a seamless, app-like user experience.
