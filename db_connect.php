@@ -3,7 +3,7 @@
 $host = 'sql311.infinityfree.com';
 $db   = 'if0_41916228_MainBase';
 $user = 'if0_41916228';
-$pass = 'a7V3nMMqS6p';
+$pass = 'YOUR_DATABASE_PASSWORD';
 
 try {
     
