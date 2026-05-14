@@ -2,7 +2,7 @@
 // submit_form.php
 require 'db_connect.php';
 
-// Tell the browser we are sending JSON back (crucial for AJAX)
+// Tell the browser we are sending JSON back
 header('Content-Type: application/json');
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $reason = trim($_POST['reason'] ?? '');
     $message = trim($_POST['message'] ?? '');
 
-    // Server-side validation (never trust the client side alone!)
+    // Server-side validation
     if (empty($name) || empty($email) || empty($message)) {
         echo json_encode(['status' => 'error', 'message' => 'Please fill in all required fields.']);
         exit;

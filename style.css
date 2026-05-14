@@ -367,3 +367,18 @@ body {
         display: none;
     }
 }
+.mouse-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none; /* Crucial: lets you click through it */
+    z-index: 9999;
+    /* Uses a soft blue radial gradient that moves based on CSS variables */
+    background: radial-gradient(
+        600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(96, 165, 250, 0.06), /* Soft blue glow */
+        transparent 40%
+    );
+}
