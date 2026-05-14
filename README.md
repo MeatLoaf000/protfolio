@@ -4,7 +4,7 @@
 
 ## Links
 * **Live Demo:** https://letshopethiswork.infinityfree.me 
-* **GitHub Repository:** https://github.com/MeatLoaf000/protfolio (Replace with your actual repo link)
+* **GitHub Repository:** https://github.com/MeatLoaf000/protfolio
 
 ## Project Overview
 This project is a dynamic, database-driven web portfolio designed to fulfill the requirements of the SEN 3002 Internet & Web Programming course. Rather than utilizing a standard corporate template, the UI/UX architecture was intentionally engineered to replicate the nostalgic 2014-era "Dashboard" aesthetic. It utilizes a fixed-sidebar layout with asynchronous content rendering to provide a seamless, app-like user experience.
